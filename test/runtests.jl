@@ -15,6 +15,9 @@ using Test
         @test C.hash(Dict(1 => 2, 2 => 1)) === C.hash(Dict(2 => 1, 1 => 2))
         @test C.hash(Matrix{Any}(undef, 5, 5)) === C.hash(Matrix{Any}(undef, 5, 5))
         @test C.hash(ntuple(n -> T(undef), 50)) === C.hash(ntuple(n -> T(undef), 50))
+
+        @test C.hash(1, 1) === C.hash(1, 1)
+        @test C.hash(1, 1) !== C.hash(1, 2)
     end
     @testset "anonymous functions" begin
         f = x -> T(@fastmath sin(x[1:5] + 1 / 2))
