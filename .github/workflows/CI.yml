@@ -23,8 +23,7 @@ jobs:
       matrix:
         version:
           - '1.6'
-          - '1.7'
-          - '1.8'
+          - '1'
           - 'nightly'
         os:
           - ubuntu-latest
@@ -50,4 +49,6 @@ jobs:
 
       - uses: codecov/codecov-action@v4
         with:
-          file: lcov.info
+          # possibly other stuff
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
